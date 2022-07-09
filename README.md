@@ -8,5 +8,5 @@ On Linux:
 
 ```bash
 cd ~/.config
-git clone https://github.com/onichandame/nvim-config --branch master --depth 1
+git clone --branch master --depth 1 https://github.com/onichandame/nvim-config nvim
 ```
