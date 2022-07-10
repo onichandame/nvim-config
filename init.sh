@@ -1,3 +1,4 @@
+ #!/usr/bin/env
 yarn global add \
 	typescript \
 	graphql-language-service-cli \
