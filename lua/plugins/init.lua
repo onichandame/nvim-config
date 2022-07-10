@@ -1,5 +1,4 @@
 local fn = vim.fn
-local config_path = fn.stdpath('config')
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
 	print('installing packer')
@@ -57,7 +56,6 @@ require('packer').startup(function()
 	if packer_bootstrap then
 		print('syncing')
 		require('packer').sync()
-		fn.system({ 'source', config_path .. '/init.sh' })
 		print('synced')
 	end
 end)
