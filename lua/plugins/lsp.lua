@@ -125,7 +125,7 @@ cmp.setup.cmdline(':', {
 })
 
 -- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -165,7 +165,7 @@ local handlers = {
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = {'marksman', 'tsserver', 'dockerls', 'sumneko_lua', 'bashls', 'html', 'pyright','graphql' }
+local servers = {'marksman', 'tsserver', 'dockerls', 'lua_ls', 'bashls', 'html', 'pyright','graphql' }
 for _, lsp in pairs(servers) do
 	require('lspconfig')[lsp].setup {
 		on_attach = on_attach,

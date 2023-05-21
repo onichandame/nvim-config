@@ -28,7 +28,7 @@ require('packer').startup(function()
 	use "lbrayner/vim-rzip"
 	use "jparise/vim-graphql"
 	-- git
-	use 'APZelos/blamer.nvim'
+	use 'f-person/git-blame.nvim'
 	use 'farmergreg/vim-lastplace'
 	use { 'tpope/vim-fugitive' }
 	-- formatter
@@ -53,6 +53,11 @@ require('packer').startup(function()
 	-- misc
 	use { 'mzlogin/vim-markdown-toc' }
 	use { 'ekalinin/dockerfile.vim' }
+	use {
+    "williamboman/mason.nvim",
+    run = ":MasonUpdate" -- :MasonUpdate updates registry contents
+	}
+
 	if packer_bootstrap then
 		print('syncing')
 		require('packer').sync()
@@ -65,7 +70,6 @@ require('plugins/nvim-tree')
 require('plugins/lsp')
 require('plugins/toggle-term')
 require('plugins/statusbar')
-require('plugins/blamer')
 require('plugins/solarized8')
 require('plugins/formatter')
 require('plugins/git')
