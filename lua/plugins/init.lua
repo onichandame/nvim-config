@@ -72,7 +72,6 @@ end)
 
 -- Plugin configs
 require('plugins/nvim-tree')
-require('plugins/mason') -- must be called before lsp to make PATH modification effective
 require('plugins/lsp')
 require('plugins/toggle-term')
 require('plugins/statusbar')
