@@ -13,6 +13,11 @@ require('packer').startup(function()
 
 	-- lsp
 	use 'neovim/nvim-lspconfig'
+	use {
+    "williamboman/mason.nvim",
+    run = ":MasonUpdate" -- :MasonUpdate updates registry contents
+	}
+	use "williamboman/mason-lspconfig.nvim"
 	use 'simrat39/rust-tools.nvim'
 	use 'nvim-lua/lsp-status.nvim'
 	use 'hrsh7th/cmp-nvim-lsp'
@@ -48,15 +53,15 @@ require('packer').startup(function()
 	use 'arkav/lualine-lsp-progress'
 	use 'windwp/nvim-autopairs'
 	use { "akinsho/toggleterm.nvim", tag = 'v2.*' }
+	use {
+  'nvim-telescope/telescope.nvim', branch = '0.1.x',
+  requires = { {'nvim-lua/plenary.nvim'} }
+	}
 	-- theme
 	use { 'lifepillar/vim-solarized8' }
 	-- misc
 	use { 'mzlogin/vim-markdown-toc' }
 	use { 'ekalinin/dockerfile.vim' }
-	use {
-    "williamboman/mason.nvim",
-    run = ":MasonUpdate" -- :MasonUpdate updates registry contents
-	}
 
 	if packer_bootstrap then
 		print('syncing')
@@ -67,9 +72,11 @@ end)
 
 -- Plugin configs
 require('plugins/nvim-tree')
+require('plugins/mason') -- must be called before lsp to make PATH modification effective
 require('plugins/lsp')
 require('plugins/toggle-term')
 require('plugins/statusbar')
 require('plugins/solarized8')
 require('plugins/formatter')
 require('plugins/git')
+require('plugins/telescope')
