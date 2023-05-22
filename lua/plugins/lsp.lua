@@ -15,7 +15,7 @@ require 'nvim-treesitter.configs'.setup {
 		'dockerfile',
 		'css'
 	},
-	sync_install = true,
+	sync_install = false,
 	highlight = { enable = false },
 	indent = { enable = true },
 	autotag = { enable = true }
