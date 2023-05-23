@@ -7,3 +7,6 @@ vim.o.hidden=true
 if(vim.fn.exists('+shellslash')==1) then
 	vim.o.shellslash=true
 end
+if(vim.fn.has('windows')==1)then
+	vim.o.shell='powershell'
+end
