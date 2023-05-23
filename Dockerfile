@@ -1,4 +1,4 @@
-FROM archlinux
+FROM archlinux:base-devel
 
 RUN pacman -Sy --noconfirm neovim git nodejs zig ripgrep
 ADD . /root/.config/nvim 
