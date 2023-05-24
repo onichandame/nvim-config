@@ -1,74 +1,69 @@
-local fn = vim.fn
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-	print('installing packer')
-	packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
-	vim.o.runtimepath = vim.fn.stdpath('data') .. '/site/pack/*/start/*,' .. vim.o.runtimepath
-	print('installed packer')
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-require('packer').startup(function()
-	-- Packer itself
-	use 'wbthomason/packer.nvim'
-
+require('lazy').setup({
 	-- lsp
-	use 'neovim/nvim-lspconfig'
-	use {
-    "williamboman/mason.nvim",
-    run = ":MasonUpdate" -- :MasonUpdate updates registry contents
-	}
-	use "williamboman/mason-lspconfig.nvim"
-	use 'simrat39/rust-tools.nvim'
-	use 'nvim-lua/lsp-status.nvim'
-	use 'hrsh7th/cmp-nvim-lsp'
-	use 'hrsh7th/cmp-buffer'
-	use 'hrsh7th/cmp-path'
-	use 'hrsh7th/cmp-cmdline'
-	use 'hrsh7th/nvim-cmp'
-	use 'hrsh7th/cmp-vsnip'
-	use 'hrsh7th/vim-vsnip'
-	use "b0o/schemastore.nvim"
-	use "nvim-treesitter/nvim-treesitter"
-	use "windwp/nvim-ts-autotag"
-	use "lbrayner/vim-rzip"
-	use "jparise/vim-graphql"
-	-- git
-	use 'f-person/git-blame.nvim'
-	use 'farmergreg/vim-lastplace'
-	use { 'tpope/vim-fugitive' }
-	-- formatter
-	use 'sbdchd/neoformat'
-	-- file explorer & toolbar
-	use {'kevinhwang91/nvim-bqf'}
-	use {
-		'kyazdani42/nvim-tree.lua',
-		requires = {
-			'kyazdani42/nvim-web-devicons', -- optional, for file icon
-		},
-	}
-	use {
-		'nvim-lualine/lualine.nvim',
-		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-	}
-	use 'arkav/lualine-lsp-progress'
-	use 'windwp/nvim-autopairs'
-	use { "akinsho/toggleterm.nvim", tag = 'v2.*' }
-	use {
-  'nvim-telescope/telescope.nvim', branch = '0.1.x',
-  requires = { {'nvim-lua/plenary.nvim'} }
-	}
-	-- theme
-	use { 'lifepillar/vim-solarized8' }
-	-- misc
-	use { 'mzlogin/vim-markdown-toc' }
-	use { 'ekalinin/dockerfile.vim' }
-
-	if packer_bootstrap then
-		print('syncing')
-		require('packer').sync()
-		print('synced')
-	end
-end)
+	'neovim/nvim-lspconfig',
+	{
+  	"williamboman/mason.nvim",
+		build = ":MasonUpdate",
+	},
+	"williamboman/mason-lspconfig.nvim",
+	'simrat39/rust-tools.nvim',
+ 	'nvim-lua/lsp-status.nvim',
+ 	'hrsh7th/cmp-nvim-lsp',
+ 	'hrsh7th/cmp-buffer',
+ 	'hrsh7th/cmp-path',
+ 	'hrsh7th/cmp-cmdline',
+ 	'hrsh7th/nvim-cmp',
+ 	'hrsh7th/cmp-vsnip',
+ 	'hrsh7th/vim-vsnip',
+ 	"b0o/schemastore.nvim",
+ 	"nvim-treesitter/nvim-treesitter",
+ 	"windwp/nvim-ts-autotag",
+ 	"lbrayner/vim-rzip",
+ 	"jparise/vim-graphql",
+ 	-- git
+ 	'f-person/git-blame.nvim',
+ 	'farmergreg/vim-lastplace',
+ 	'tpope/vim-fugitive',
+ 	-- formatter
+ 	'sbdchd/neoformat',
+ 	-- file explorer & toolbar
+ 	'kevinhwang91/nvim-bqf',
+ 	{
+ 		'kyazdani42/nvim-tree.lua',
+ 		dependencies = {
+ 			'kyazdani42/nvim-web-devicons', -- optional, for file icon
+ 		},
+ 	},
+ 	{
+ 		'nvim-lualine/lualine.nvim',
+ 		dependencies = { 'kyazdani42/nvim-web-devicons', lazy = true }
+ 	},
+ 	'arkav/lualine-lsp-progress',
+ 	'windwp/nvim-autopairs',
+ 	{ "akinsho/toggleterm.nvim", version = "*", config = true},
+ 	{
+   'nvim-telescope/telescope.nvim', branch = '0.1.x',
+   dependencies = { 'nvim-lua/plenary.nvim' }
+ 	},
+ 	-- theme
+ 	'lifepillar/vim-solarized8',
+ 	-- misc
+ 	'mzlogin/vim-markdown-toc',
+ 	'ekalinin/dockerfile.vim',
+})
 
 -- Plugin configs
 require('plugins/nvim-tree')
