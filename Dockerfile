@@ -1,5 +1,6 @@
-FROM archlinux:base-devel
+FROM alpine:3.18
 
-RUN pacman -Sy --noconfirm neovim git nodejs npm zig ripgrep
+RUN apk update
+RUN apk add neovim nodejs ripgrep
 ADD . /root/.config/nvim 
 RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' -c 'MasonUpdate'
