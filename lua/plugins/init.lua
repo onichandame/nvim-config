@@ -63,6 +63,7 @@ require('lazy').setup({
  	-- misc
  	'mzlogin/vim-markdown-toc',
  	'ekalinin/dockerfile.vim',
+	'ojroques/nvim-osc52',
 })
 
 -- Plugin configs
@@ -74,3 +75,4 @@ require('plugins/solarized8')
 require('plugins/formatter')
 require('plugins/git')
 require('plugins/telescope')
+require('plugins/clipboard')

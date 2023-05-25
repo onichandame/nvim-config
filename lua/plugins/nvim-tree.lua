@@ -208,3 +208,5 @@ require 'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
 		},
 	},
 } -- END_DEFAULT_OPTS
+
+vim.api.nvim_set_keymap('n','<F2>',':NvimTreeFindFileToggle<CR>',{silent=true})
