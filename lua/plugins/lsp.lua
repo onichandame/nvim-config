@@ -13,7 +13,8 @@ require 'nvim-treesitter.configs'.setup {
 		'graphql',
 		'go',
 		'dockerfile',
-		'css'
+		'css',
+		'markdown'
 	},
 	sync_install = true,
 	highlight = { enable = false },
@@ -166,7 +167,7 @@ local handlers = {
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = {'marksman', 'tsserver', 'dockerls', 'lua_ls', 'bashls', 'html', 'pyright','graphql' }
+local servers = { 'marksman', 'tsserver', 'dockerls', 'lua_ls', 'bashls', 'html', 'pyright','graphql' }
 for _, lsp in pairs(servers) do
 	require('lspconfig')[lsp].setup {
 		on_attach = on_attach,
@@ -174,14 +175,6 @@ for _, lsp in pairs(servers) do
 		capabilities = capabilities,
 	}
 end
-
-require 'rust-tools'.setup({
-	server = {
-		on_attach = on_attach,
-		handlers = handlers,
-		capabilities = capabilities,
-	}
-})
 
 require('lspconfig').jsonls.setup {
 	on_attach = on_attach,
@@ -207,6 +200,14 @@ require('lspconfig').yamlls.setup {
 		validate = { enable = true }
 	}
 }
+
+require 'rust-tools'.setup({
+	server = {
+		on_attach = on_attach,
+		handlers = handlers,
+		capabilities = capabilities,
+	}
+})
 
 require('mason-lspconfig').setup{
 	automatic_installation=true
