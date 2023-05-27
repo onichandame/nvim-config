@@ -188,14 +188,37 @@ require('lspconfig').jsonls.setup {
 	},
 }
 
+local yaml_schema = require('schemastore').yaml.schemas()
+yaml_schema['kubernetes']={
+	"/*sts.yaml",
+	"/*sts.yml",
+	"/*svc.yaml",
+	"/*svc.yml",
+	"/*deploy.yaml",
+	"/*deploy.yml",
+	"/*cm.yaml",
+	"/*cm.yml",
+	"/*ns.yaml",
+	"/*ns.yml",
+	"/*role.yaml",
+	"/*role.yml",
+	"/*sa.yaml",
+	"/*sa.yml",
+	"/*sc.yaml",
+	"/*sc.yml",
+	"/*pv.yaml",
+	"/*pv.yml",
+	"/*pvc.yaml",
+	"/*pvc.yml",
+}
+
 require('lspconfig').yamlls.setup {
 	on_attach = on_attach,
 	handlers = handlers,
 	capabilities = capabilities,
 	settings = {
 		yaml = {
-			schemaStore=true,
-			schemas = require('schemastore').yaml.schemas(),
+			schemas = yaml_schema
 		},
 		validate = { enable = true }
 	}
