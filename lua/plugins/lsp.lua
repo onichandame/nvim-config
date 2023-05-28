@@ -190,6 +190,8 @@ require('lspconfig').jsonls.setup {
 
 local yaml_schema = require('schemastore').yaml.schemas()
 yaml_schema['kubernetes']={
+	"/*secret.yaml",
+	"/*secret.yml",
 	"/*sts.yaml",
 	"/*sts.yml",
 	"/*svc.yaml",
