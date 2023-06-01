@@ -28,6 +28,7 @@ require('lazy').setup({
  	'hrsh7th/nvim-cmp',
  	'hrsh7th/cmp-vsnip',
  	'hrsh7th/vim-vsnip',
+	"rafamadriz/friendly-snippets",
  	"b0o/schemastore.nvim",
  	"nvim-treesitter/nvim-treesitter",
  	"windwp/nvim-ts-autotag",
