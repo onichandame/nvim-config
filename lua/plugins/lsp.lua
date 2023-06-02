@@ -80,7 +80,7 @@ cmp.setup({
 			if cmp.visible() then
 				cmp.select_next_item()
 			elseif vim.fn["vsnip#jumpable"](1) == 1 then
-				feedkey("<Plug>(vsnip-jump-next)", "")
+				vim.fn.feedkey("<Plug>(vsnip-jump-next)", "")
 			elseif has_words_before() then
 				cmp.complete()
 			else
