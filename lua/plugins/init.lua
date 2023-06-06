@@ -53,7 +53,10 @@ require('lazy').setup({
  		dependencies = { 'kyazdani42/nvim-web-devicons', lazy = true }
  	},
  	'arkav/lualine-lsp-progress',
- 	'windwp/nvim-autopairs',
+ 	{
+		'windwp/nvim-autopairs',
+		config = function () require("nvim-autopairs").setup {} end
+	},
  	{ "akinsho/toggleterm.nvim", version = "*", config = true},
  	{
    'nvim-telescope/telescope.nvim', branch = '0.1.x',
