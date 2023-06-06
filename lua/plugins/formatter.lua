@@ -1,7 +1,7 @@
 vim.g.neoformat_try_node_exe =1
-vim.cmd([[
+vim.api.nvim_set_keymap('n','<leader>f',[[
 augroup fmt
   autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
+  autocmd BufWritePre * | Neoformat
 augroup END
-]])
+]],{})
