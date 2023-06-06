@@ -32,7 +32,7 @@ npairs.setup({
 	ts_config = {
 		lua = { 'string', 'comment' }, -- it will not add a pair on that treesitter node
 		javascript = { 'template_string' },
-		typescript = true,
+		typescript = {'string', 'template_string', 'source'},
 		java = false, -- don't check treesitter on java
 	}
 })
