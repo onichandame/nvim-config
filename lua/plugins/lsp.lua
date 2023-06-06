@@ -10,6 +10,7 @@ require 'nvim-treesitter.configs'.setup {
 		'vim',
 		'json5',
 		'html',
+		'prisma',
 		'graphql',
 		'go',
 		'dockerfile',
@@ -17,7 +18,7 @@ require 'nvim-treesitter.configs'.setup {
 		'markdown'
 	},
 	sync_install = true,
-	highlight = { enable = false },
+	highlight = { enable = true },
 	indent = { enable = true },
 	autotag = { enable = true }
 }
@@ -167,7 +168,7 @@ local handlers = {
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'marksman', 'tsserver', 'dockerls', 'lua_ls', 'bashls', 'html', 'pyright','graphql' }
+local servers = { 'marksman', 'tsserver', 'dockerls', 'lua_ls', 'prismals', 'bashls', 'html', 'pyright','graphql' }
 for _, lsp in pairs(servers) do
 	require('lspconfig')[lsp].setup {
 		on_attach = on_attach,
