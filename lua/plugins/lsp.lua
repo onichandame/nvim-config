@@ -171,7 +171,7 @@ local handlers = {
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'marksman', 'tsserver', 'dockerls', 'lua_ls', 'prismals', 'bashls', 'html', 'pyright', 'graphql' }
+local servers = { 'tsserver', 'dockerls', 'lua_ls', 'prismals', 'bashls', 'html', 'pyright', 'graphql' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
