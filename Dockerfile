@@ -6,6 +6,7 @@ RUN curl https://github.com/LuaLS/lua-language-server/releases/download/3.6.23/l
 RUN rustup-init -y
 ENV PATH=/root/.cargo/bin:${PATH}
 RUN rustup component add rust-analyzer
+RUN ln -s /root/.rustup/toolchains/stable-x86_64-unknown-linux-musl/bin/rust-analyzer /root/.cargo/bin/rust-analyzer
 RUN cargo install --features lsp --locked taplo-cli
 ADD . /root/.config/nvim 
 RUN nvim --headless "+Lazy! sync" +qa
