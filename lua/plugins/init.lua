@@ -14,7 +14,12 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- lsp
   'neovim/nvim-lspconfig',
-  'tamago324/nlsp-settings.nvim',
+  {
+    'tamago324/nlsp-settings.nvim',
+    dependencies = {
+      'rcarriga/nvim-notify',
+    },
+  },
   {
     "williamboman/mason.nvim",
     build = ":MasonUpdate",
@@ -73,7 +78,6 @@ require('lazy').setup({
   'mzlogin/vim-markdown-toc',
   'ekalinin/dockerfile.vim',
   'ojroques/nvim-osc52',
-  'rcarriga/nvim-notify',
 })
 
 -- Plugin configs
