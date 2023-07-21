@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- lsp
   'neovim/nvim-lspconfig',
+  'tamago324/nlsp-settings.nvim',
   {
     "williamboman/mason.nvim",
     build = ":MasonUpdate",
@@ -23,7 +24,7 @@ require('lazy').setup({
     "jose-elias-alvarez/null-ls.nvim",
     config = function()
       local null_ls = require("null-ls")
-      require("null-ls").setup { sources = { null_ls.builtins.formatting.prettier } }
+      null_ls.setup { sources = { null_ls.builtins.formatting.prettier } }
     end,
     dependencies = { "nvim-lua/plenary.nvim" }
   },
@@ -72,6 +73,7 @@ require('lazy').setup({
   'mzlogin/vim-markdown-toc',
   'ekalinin/dockerfile.vim',
   'ojroques/nvim-osc52',
+  'rcarriga/nvim-notify',
 })
 
 -- Plugin configs
