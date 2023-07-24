@@ -39,8 +39,6 @@ npairs.setup({
 
 local ts_conds = require('nvim-autopairs.ts-conds')
 
-require('mason').setup()
-
 -- press % => %% only while inside a comment or string
 npairs.add_rules({
   Rule("%", "%", "lua")
@@ -177,12 +175,23 @@ local handlers = {
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'tsserver', 'taplo', 'dockerls', 'lua_ls', 'prismals', 'bashls', 'html', 'pyright', 'graphql' }
-for _, lsp in pairs(servers) do
-  require('lspconfig')[lsp].setup {
+local servers = { 'tsserver', 'taplo', 'dockerls', 'prismals', 'bashls', 'html', 'pyright', 'graphql' }
+for _, server in pairs(servers) do
+  require('lspconfig')[server].setup {
     on_attach = on_attach,
     handlers = handlers,
     capabilities = capabilities,
+  }
+end
+
+local containerized_servers = { 'lua_ls' }
+for _, server in pairs(containerized_servers) do
+  require 'lspconfig'[server].setup {
+    on_attach = on_attach,
+    handlers = handlers,
+    capabilities = capabilities,
+    cmd = require 'lspcontainers'.command(server)
+
   }
 end
 
@@ -243,7 +252,3 @@ require 'rust-tools'.setup({
     capabilities = capabilities,
   }
 })
-
-require('mason-lspconfig').setup {
-  automatic_installation = true
-}

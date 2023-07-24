@@ -20,11 +20,7 @@ require('lazy').setup({
       'rcarriga/nvim-notify',
     },
   },
-  {
-    "williamboman/mason.nvim",
-    build = ":MasonUpdate",
-  },
-  "williamboman/mason-lspconfig.nvim",
+  'lspcontainers/lspcontainers.nvim',
   {
     "jose-elias-alvarez/null-ls.nvim",
     config = function()
