@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- lsp
   'neovim/nvim-lspconfig',
+  'lspcontainers/lspcontainers.nvim',
   'tamago324/nlsp-settings.nvim',
   {
     "williamboman/mason.nvim",
