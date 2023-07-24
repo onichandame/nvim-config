@@ -175,23 +175,12 @@ local handlers = {
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'tsserver', 'taplo', 'dockerls', 'prismals', 'bashls', 'html', 'pyright', 'graphql' }
+local servers = { 'lua_ls', 'tsserver', 'taplo', 'dockerls', 'prismals', 'bashls', 'html', 'pyright', 'graphql' }
 for _, server in pairs(servers) do
   require('lspconfig')[server].setup {
     on_attach = on_attach,
     handlers = handlers,
     capabilities = capabilities,
-  }
-end
-
-local containerized_servers = { 'lua_ls' }
-for _, server in pairs(containerized_servers) do
-  require 'lspconfig'[server].setup {
-    on_attach = on_attach,
-    handlers = handlers,
-    capabilities = capabilities,
-    cmd = require 'lspcontainers'.command(server)
-
   }
 end
 

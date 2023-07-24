@@ -20,7 +20,6 @@ require('lazy').setup({
       'rcarriga/nvim-notify',
     },
   },
-  'lspcontainers/lspcontainers.nvim',
   {
     "jose-elias-alvarez/null-ls.nvim",
     config = function()
