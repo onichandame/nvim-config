@@ -6,6 +6,10 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fe', ":Telescope file_browser path=%:p:h select_buffer=true<CR>", { noremap = true })
 require('telescope').setup {
+  defaults = vim.tbl_extend('force',
+    require 'telescope.themes'.get_dropdown(),
+    {}
+  ),
   pickers = {
     buffers = {
       mappings = {
@@ -13,7 +17,7 @@ require('telescope').setup {
           d = actions.delete_buffer
         }
       }
-    }
+    },
   },
   extensions = {
     file_browser = {
@@ -24,5 +28,9 @@ require('telescope').setup {
     }
   }
 }
+vim.cmd([[
+autocmd User TelescopePreviewerLoaded setlocal wrap
+autocmd User TelescopePreviewerLoaded setlocal number
+]])
 require 'telescope'.load_extension 'zf-native'
 require 'telescope'.load_extension 'file_browser'
