@@ -46,7 +46,13 @@ require('lazy').setup({
   -- git
   'f-person/git-blame.nvim',
   'farmergreg/vim-lastplace',
-  'tpope/vim-fugitive',
+  {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      local gitsigns = require 'gitsigns'
+      gitsigns.setup()
+    end
+  },
   -- file explorer & toolbar
   'kevinhwang91/nvim-bqf',
   {
