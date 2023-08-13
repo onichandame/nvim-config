@@ -21,6 +21,12 @@ require('lazy').setup({
     },
   },
   {
+    "williamboman/mason.nvim",
+    config = function()
+      require 'mason'.setup()
+    end
+  },
+  {
     "jose-elias-alvarez/null-ls.nvim",
     config = function()
       local null_ls = require("null-ls")
