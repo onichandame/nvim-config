@@ -13,7 +13,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   -- lsp
-  'neovim/nvim-lspconfig',
   {
     'tamago324/nlsp-settings.nvim',
     dependencies = {
@@ -26,6 +25,14 @@ require('lazy').setup({
       require 'mason'.setup()
     end
   },
+  {
+    'williamboman/mason-lspconfig.nvim',
+    dependencies = { "williamboman/mason.nvim" },
+    config = function()
+      require 'mason-lspconfig'.setup({ automatic_installation = true })
+    end
+  },
+  { 'neovim/nvim-lspconfig',   dependencies = { 'williamboman/mason-lspconfig.nvim' } },
   {
     "jose-elias-alvarez/null-ls.nvim",
     config = function()
@@ -73,7 +80,7 @@ require('lazy').setup({
   },
   'arkav/lualine-lsp-progress',
   'windwp/nvim-autopairs',
-  { "akinsho/toggleterm.nvim", version = "*", config = true },
+  { "akinsho/toggleterm.nvim", version = "*",                                         config = true },
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
