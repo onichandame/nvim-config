@@ -110,9 +110,6 @@ require 'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
 		number = false,
 		relativenumber = false,
 		signcolumn = "yes",
-		mappings = {
-			custom_only = false,
-		},
 	},
 	renderer = {
 		indent_markers = {
