@@ -88,7 +88,8 @@ require('lazy').setup({
   },
   {
     "natecraddock/telescope-zf-native.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim", }
+    dependencies = { "nvim-telescope/telescope.nvim", },
+    build = "make"
   },
   {
     "nvim-telescope/telescope-file-browser.nvim",
