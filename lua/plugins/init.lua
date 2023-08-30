@@ -56,7 +56,6 @@ require('lazy').setup({
   "windwp/nvim-ts-autotag",
   "lbrayner/vim-rzip",
   "jparise/vim-graphql",
-  'hashivim/vim-terraform',
   -- git
   'f-person/git-blame.nvim',
   'farmergreg/vim-lastplace',
