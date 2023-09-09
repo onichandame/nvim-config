@@ -236,6 +236,30 @@ require('lspconfig').yamlls.setup {
   }
 }
 
+local efmls_config_prettier = require 'efmls-configs.formatters.prettier'
+local efmls_config_black = require 'efmls-configs.formatters.black'
+local languages = {
+  typescript = { efmls_config_prettier },
+  javascript = { efmls_config_prettier },
+  typescriptreact = { efmls_config_prettier },
+  javascriptreact = { efmls_config_prettier },
+  python = { efmls_config_black },
+}
+require 'lspconfig'.efm.setup {
+  filetypes = vim.tbl_keys(languages),
+  settings = {
+    rootMarkers = { '.git/' },
+    languages = languages,
+  },
+  init_options = {
+    documentFormatting = true,
+    documentRangeFormatting = true,
+  },
+  on_attach = on_attach,
+  handlers = handlers,
+  capabilities = capabilities,
+}
+
 require 'rust-tools'.setup({
   server = {
     on_attach = on_attach,

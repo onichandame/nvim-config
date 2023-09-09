@@ -33,14 +33,14 @@ require('lazy').setup({
     end
   },
   { 'neovim/nvim-lspconfig',   dependencies = { 'williamboman/mason-lspconfig.nvim' } },
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    config = function()
-      local null_ls = require("null-ls")
-      null_ls.setup { sources = { null_ls.builtins.formatting.prettier, null_ls.builtins.formatting.black } }
-    end,
-    dependencies = { "nvim-lua/plenary.nvim" }
-  },
+  --{
+  --  "jose-elias-alvarez/null-ls.nvim",
+  --  config = function()
+  --    local null_ls = require("null-ls")
+  --    null_ls.setup { sources = { null_ls.builtins.formatting.prettier, null_ls.builtins.formatting.black } }
+  --  end,
+  --  dependencies = { "nvim-lua/plenary.nvim" }
+  --},
   'simrat39/rust-tools.nvim',
   'nvim-lua/lsp-status.nvim',
   'hrsh7th/cmp-nvim-lsp',
@@ -57,6 +57,7 @@ require('lazy').setup({
   "lbrayner/vim-rzip",
   "jparise/vim-graphql",
   'towolf/vim-helm',
+  'creativenull/efmls-configs-nvim',
   -- git
   'f-person/git-blame.nvim',
   'farmergreg/vim-lastplace',
