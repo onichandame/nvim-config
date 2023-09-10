@@ -177,7 +177,7 @@ local handlers = {
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = { 'lua_ls', 'tsserver', 'helm_ls', 'taplo', 'dockerls', 'prismals', 'bashls', 'html', 'pyright',
-  'graphql' }
+}
 for _, server in pairs(servers) do
   require('lspconfig')[server].setup {
     on_attach = on_attach,
@@ -185,6 +185,12 @@ for _, server in pairs(servers) do
     capabilities = capabilities,
   }
 end
+require 'lspconfig'.graphql.setup {
+  filetypes = { 'graphql', 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' },
+  on_attach = on_attach,
+  handlers = handlers,
+  capabilities = capabilities,
+}
 
 require('lspconfig').jsonls.setup {
   on_attach = on_attach,
