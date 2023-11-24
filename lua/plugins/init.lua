@@ -59,6 +59,7 @@ require('lazy').setup({
   'towolf/vim-helm',
   'creativenull/efmls-configs-nvim',
   -- git
+  'tpope/vim-fugitive',
   'f-person/git-blame.nvim',
   'farmergreg/vim-lastplace',
   {
@@ -113,3 +114,4 @@ require('plugins/statusbar')
 require('plugins/solarized8')
 require('plugins/telescope')
 require('plugins/clipboard')
+require('plugins/git')
