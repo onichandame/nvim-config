@@ -176,7 +176,8 @@ local handlers = {
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'lua_ls', 'tsserver', 'marksman', 'helm_ls', 'taplo', 'dockerls', 'prismals', 'bashls', 'html',
+local servers = { 'lua_ls', 'tsserver', 'tailwindcss', 'marksman', 'helm_ls', 'taplo', 'dockerls', 'prismals', 'bashls',
+  'html',
   'pyright',
 }
 for _, server in pairs(servers) do
