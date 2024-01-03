@@ -25,6 +25,9 @@ require('telescope').setup {
       auto_depth = true,
       hide_parent_dir = true,
       grouped = true,
+    },
+    quicknote = {
+      defaultScope = "CWD",
     }
   }
 }
@@ -34,3 +37,4 @@ autocmd User TelescopePreviewerLoaded setlocal number
 ]])
 require 'telescope'.load_extension 'zf-native'
 require 'telescope'.load_extension 'file_browser'
+require 'telescope'.load_extension 'quicknote'
