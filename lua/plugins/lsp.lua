@@ -143,7 +143,7 @@ vim.api.nvim_set_keymap('n', '[g', '<cmd>lua vim.diagnostic.goto_prev()<CR>', op
 vim.api.nvim_set_keymap('n', ']g', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<space>w',
-  '<cmd>lua vim.lsp.buf.format{timeout_ms=10000, filter = function(client) return client.name ~= "tsserver" end }<CR><cmd>:w<CR>',
+  '<cmd>lua vim.lsp.buf.format{timeout_ms=10000, filter = function(client) return client.name ~= "tsserver" and client.name ~= "jsonls" end }<CR><cmd>:w<CR>',
   opts)
 
 -- Use an on_attach function to only map the following keys
@@ -249,6 +249,8 @@ local efmls_config_black = require 'efmls-configs.formatters.black'
 local languages = {
   typescript = { efmls_config_prettier },
   javascript = { efmls_config_prettier },
+  jsonc = { efmls_config_prettier },
+  json = { efmls_config_prettier },
   typescriptreact = { efmls_config_prettier },
   javascriptreact = { efmls_config_prettier },
   python = { efmls_config_black },
